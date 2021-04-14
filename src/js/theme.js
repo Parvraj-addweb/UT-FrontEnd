@@ -1,11 +1,5 @@
 jQuery(document).ready(function () {
 
-  // if (jQuery('#myForm input').val() != "") {
-  //   jQuery(".add-btn").prop('disabled', false);
-  // } else {
-  //   jQuery(".add-btn").prop('disabled', true);
-  // }
-
   jQuery('#myForm').submit(function (event) {
     event.preventDefault();
     var jQueryinputs = jQuery('#myForm :input');
@@ -13,10 +7,12 @@ jQuery(document).ready(function () {
 
     jQueryinputs.each(function () {
       values[this.name] = jQuery(this).val();
-      values[this.phone] = jQuery
+      values[this.phone] = jQuery(this).val();
     });
 
-    if (jQuery(values.phone.length != 0 && values.name.length != 0)) {
+    if (jQuery('#userName').val().length != 0 && jQuery('#userMob').val().length != 0) {
+      console.log(values.phone.length);
+      console.log(values.name.length);
 
       if (values.phone.length > 0) {
         if (jQuery('#userMob').val().match(/^[0-9-+]+$/)) {
@@ -26,19 +22,15 @@ jQuery(document).ready(function () {
           alert("Please enter valid phone number");
         }
       }
-    }
-    else {
+    } else {
       alert('Please fill all the details');
     }
+
+
 
     jQuery('.delete-row').on('click', function (event) {
       event.preventDefault();
       jQuery(this).closest('.table-row').remove();
-    });
-
-    jQuery('.favorite').on('click', function (event) {
-      event.preventDefault();
-      jQuery('.favorite span').toggleClass('fa');
     });
 
     jQuery("body").find(".btn-update").hide();
