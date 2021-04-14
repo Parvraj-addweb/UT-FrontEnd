@@ -1,0 +1,154 @@
+//  Form
+.page-body {
+  .form-wrap {
+    border: 1px solid black;
+    margin-bottom: 50px;
+
+    .form-header {
+      background-color: $border-blue;
+      border-bottom: 1px solid black;
+      padding: 15px;
+
+      h3 {
+        color: white;
+        margin-bottom: 0;
+      }
+    }
+
+    form {
+      padding: 30px 15px;
+
+      input {
+        border: 1px solid black;
+
+        @media (max-width: 767px) {
+          margin-bottom: 20px;
+        }
+      }
+
+      .btn-wrap {
+        height: 100%;
+        width: 100%;
+
+        .add-btn {
+          align-items: center;
+          background-color: $border-blue;
+          border: none;
+          border-radius: 10px;
+          color: white;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          text-transform: capitalize;
+          width: 100%;
+
+          &:hover {
+            background-color: white;
+            border: 2px solid $border-blue;
+            border-radius: 10px;
+            color: $border-blue;
+            font-weight: bold;
+
+            i {
+              color: $border-blue;
+            }
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          @media (max-width: 767px) {
+            padding: 5px 15px;
+            width: auto;
+          }
+
+          i {
+            color: white;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.display-data {
+  width: 100%;
+
+  .sort-btn {
+    margin-bottom: 50px;
+
+    i {
+      margin-right: 10px;
+    }
+  }
+
+  #displayArea {
+    @media (max-width: 575px) {
+      overflow: auto;
+    }
+
+    .table-row {
+      border-bottom: 2px solid black;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+
+      @media (max-width: 575px) {
+        flex-wrap: unset;
+        margin: 0;
+        margin-bottom: 10px;
+        overflow-x: scroll;
+        width: 575px;
+      }
+
+      .user-name,
+      .user-phone {
+        display: inline-block;
+      }
+
+      .form-control {
+        width: auto;
+      }
+
+      .favorite {
+        color: #FCCC33;
+        margin-right: 20px;
+      }
+
+      span {
+        margin-right: 15px;
+      }
+
+      .btn-wrap {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .delete-row {
+        float: right;
+
+        .delete {
+          color: red;
+        }
+      }
+
+      .btn-cancel {
+
+        i {
+          color: red;
+        }
+      }
+
+      .btn-edit,
+      .btn-update {
+
+        i {
+          color: green;
+        }
+      }
+    }
+  }
+}

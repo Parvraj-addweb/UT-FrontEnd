@@ -1,0 +1,43 @@
+//  Form
+#top {
+  form {
+    label,
+    .gfield_label {
+        font-family: $PxGrotesk-regular;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.5;
+        color: $vero-blue;
+        text-transform: uppercase;
+        }
+
+      .form-control {
+        font-family: $PxGrotesk-regular;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: normal;
+        border: none;
+        border-bottom: 1.5px solid $slate;
+        color: $slate;
+        outline: 0;
+        padding: 7px 0;
+        background: transparent;
+        display: block;
+        margin: 0;
+        transition:.3s ease-in;
+        animation-timing-function:linear;
+        animation-duration: 3s;
+        box-shadow: none;
+
+        &::placeholder{
+          color: $slate;
+        }
+
+        &:focus {
+          color: $vero-blue;
+          border-bottom: 1.5px solid $teal;
+        }
+      }
+  } 
+}

@@ -1,0 +1,178 @@
+/**
+ * Global component
+ *
+ * - Breadcrumd
+ * - Scroll icon
+ * - Social icon
+ * - Read more button design
+ * -
+ */
+
+
+// breadcrumd 
+.breadcrumb {
+  .breadcrumb-trail {
+    @extend .regular;
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Scroll icon
+.scroll-icon {
+  position: fixed;
+  z-index: 9;
+  bottom: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .cover {
+    display: flex;
+    justify-content: space-around;
+    width: 34px;
+    height: 52px;
+    border: 1px solid $white;
+    border-radius: 70px;
+
+    .dot {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $white;
+      animation: wave 2.5s linear infinite;
+      font-size: 0;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  .scroll-text {
+    @extend .small-text;
+    color: $white;
+    letter-spacing: 1.68px;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(50px);
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// Changed Border color of image (Blog Page)
+.entry-content-wrapper{
+  .entry-content{
+    .wp-caption{
+      border-color: $slate;
+    }
+  }
+}
+
+// Social Icon
+#top {
+  .entry-footer {
+    .av-share-box {
+      .av-share-box-list {
+        color: $slate;
+        background-color: $cream;
+
+        .av-share-link{
+          a {
+            color: $vero-blue;
+          }
+
+          .avia-related-tooltip {
+            color: $vero-blue;
+            width: 155px;
+            background-color: $white;
+            border: 1px solid $slate;
+            border-radius: 2px;
+            box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.1);
+
+            .avia-arrow-wrap {
+              .avia-arrow {
+                border: 1px solid $slate;
+                border-top: none;
+                border-left: none;
+                background-color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Read more button
+.togglecontainer {
+  .av_toggle_section {
+    .single_toggle {
+      .toggler {
+        border-color: $slate;
+        color: $teal;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.togglecontainer {
+  .av_toggle_section {
+    .single_toggle {
+      .toggle_wrap {
+        .toggle_content {
+          border-color: $slate;
+       }
+     }
+   }
+ }
+}
+
+
+//
+#top {
+  .fullsize {
+    .related_posts {
+      .related_entries_container {
+       .av_one_eighth {
+         .relThumWrap {
+           .avia-related-tooltip {
+              background-color: $white;
+              border: 1px solid $slate;
+              .avia-arrow-wrap {
+                .avia-arrow {
+                  border: 1px solid $slate;
+                  border-top: none;
+                  border-left: none;
+                  background-color: $white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

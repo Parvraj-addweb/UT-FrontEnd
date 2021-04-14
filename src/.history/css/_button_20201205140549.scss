@@ -1,0 +1,23 @@
+//  Button
+
+.btn,
+input[type="submit"] {
+  background-color: $teal;
+  padding: 24px 48px;
+  border-radius: 4px;
+  color: $white;
+  font-size:20px;
+  border: none;
+  font-family: $Aktiv-regular;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+
+  &:hover {
+    background-color:$hover-teal;
+    transform: translateY(-8px);
+    animation-duration: 3s; 
+  }  
+}
+

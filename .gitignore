@@ -1,4 +1,6 @@
-.sass-cache/
-*.css.map
-*.sass.map
-*.scss.map
+# Node and Bower
+/node_modules/
+
+# Ignore sensitive information
+/*.sql
+/*.sql.gz

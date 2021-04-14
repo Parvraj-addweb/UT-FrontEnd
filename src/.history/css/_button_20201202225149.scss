@@ -1,0 +1,141 @@
+//  Button
+
+.btn,
+input[type="submit"] {
+  background-color: $teal;
+  padding: 24px 48px;
+  border-radius: 4px;
+  color: $white;
+  font-size:20px;
+  border: none;
+  font-family: $Aktiv-regular;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+
+  &:hover {
+    background-color:$hover-teal;
+    transform: translateY(-8px);
+    animation-duration: 3s; 
+  }  
+}
+
+
+.btn-secondary {
+  position: relative;
+  height: 55px;
+  padding: 16px 32px;
+  border: 2px solid $white;
+  border-radius: 4px;
+  color: $white;
+  font-family: $Aktiv-medium;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: normal;
+  text-transform: uppercase;
+  background-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  white-space: nowrap;
+  animation: 300ms btn-border-in ease-in;
+}
+
+.btn-secondary::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  height: 2px;
+  width: 100%;
+  background: transparent;
+
+}
+
+.btn-secondary:hover {
+  animation: 1s btn-border-out forwards;
+  cursor: pointer;
+}
+
+.btn-secondary:hover::after {
+  display: block;
+  opacity: 1;
+  animation: sec 500ms forwards;
+}
+
+@keyframes btn-border-out {
+
+  0% {
+  border-left-color: transparent;
+  }
+
+  25% {
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  
+  }
+
+  50% {
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  }
+
+  100% {
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  
+  }
+
+}
+
+@keyframes sec {
+  0% {
+  width: 100%;
+  }
+
+  100% {
+  width: 60%;
+  background-color: teal;
+  }
+}
+
+
+@keyframes btn-border-in {
+  100% {
+  border-left-color: transparent;
+  
+  }
+
+  50% {
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  
+  }
+
+  25% {
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  
+  }
+
+  0% {
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  
+  }
+}
+
+// Override Button
+.avia-button,
+body div .avia-button,
+.avia-button.avia-size-large {
+  @extend .btn;
+}

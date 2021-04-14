@@ -1,0 +1,70 @@
+/* --------------------------------------------------
+	0.1 Settigns
+-------------------------------------------------- */
+
+
+
+/* ---- Colors ---- */
+
+$white: #FFF;
+$black: #000;
+$vero-blue:#001E28;
+$cream:#f7f4f1;
+$teal:#003e51;
+$hover-teal:#3BB2AC;
+$text-light:#E2E1DD;
+$slate:#A6B5B4;
+$lake:#78a3a6;
+$sand-light:#ecd9bb;
+$sand-dark:#d5b297;
+$red:#FF0000;
+/* ---- Text ---- */
+
+// Font Family
+$PxGrotesk: 'PxGrotesk';
+$PxGrotesk-url: 
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Regular/Px-Grotesk-Regular.woff'),
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Regular/Px-Grotesk-Regular.otf') format('woff');
+
+$PxGrotesk-bold: 'PxGrotesk bold';
+$PxGrotesk-bold-url: 
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Bold/Px-Grotesk-Bold.otf'),
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Bold/Px-Grotesk-Bold.woff') format('woff');
+
+$PxGrotesk-light: 'PxGrotesk light';
+$PxGrotesk-light-url: 
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Light/Px-Grotesk-Light.otf'),
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Light/Px-Grotesk-Light.woff') format('woff');
+
+$PxGrotesk-regular: 'PxGrotesk regular';
+$PxGrotesk-regular-url:
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Regular/Px-Grotesk-Regular.otf'),
+  url('../assets/fonts/PX-Grotesk-Font/Px-Grotesk-Regular/Px-Grotesk-Regular.woff') format('woff');
+
+$Aktiv-regular: 'Aktiv regular';
+$Aktiv-regular-url: 
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Regular.eot') format('eot'),
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Regular.woff') format('woff'),
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Regular.woff2') format('woff2');
+
+$Aktiv-medium: 'Aktiv medium';
+
+$Aktiv-medium-url: 
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Medium.eot') format('eot'),
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Medium.ttf') format('truetype'),
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Medium.woff') format('woff'),
+  url('../assets/fonts/aktiv-font/AktivGroteskCorp-Medium.woff2') format('woff2');
+
+/* ---- White Space and widths---- */
+$ws-xs: 50px;
+$ws-s: 65px;
+$ws-m: 100px;
+$ws-l: 160px;
+
+/* ---- Media Queries Breakpoints ---- */
+$screen-xs: 600px;
+$screen-sm: 770px;
+$screen-md: 992px;
+$screen-lg: 1260px;
+$screen-xlg: 1440px;
+  

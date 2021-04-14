@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>UT</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="./build/css/main.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="./src/assets/images/cmp-logo.png" />
+    </div>
+    <h1>My UT phone book</h1>
+  </header>
+  <main>
+    <div class="page-body">
+      <div class="container">
+        <div class="form-wrap">
+          <div class="form-header">
+            <h3>Add new contact</h3>
+          </div>
+          <form id="myForm">
+            <div class="row">
+              <div class="col-md-5">
+                <input type="text" class="form-control" id="userName" placeholder="Name" name="name">
+              </div>
+              <div class="col-md-5">
+                <input type="text" maxlength="10" class="form-control phone" id="userMob" placeholder="Phone Number"
+                  name="phone">
+              </div>
+              <div class=" col-md-2">
+                <div class="btn-wrap">
+                  <button class="add-btn" type="submit" name="sub" value="submit">
+                    <i class="fa fa-plus"></i>
+                    <span>submit</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="display-data">
+          <div id="displayArea"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+  <script src="./build/js/theme.min.js"></script>
+
+  <script>
+
+    $(document).on("click", ".favtd", function () {
+      $(this).parent().prependTo("#displayArea");
+    });
+
+    $(document).on("click", ".table-row", function () {
+      $(this).addClass('bg-warning');
+    });
+
+  </script>
+</body>
+
+</html>

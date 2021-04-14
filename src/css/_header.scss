@@ -1,0 +1,28 @@
+.header {
+  align-items: center;
+  box-shadow: 0 3px 5px -3px rgba(0, 0, 0, .4);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  padding: 0 15px;
+
+  .logo {
+    margin-right: 20px;
+
+    img {
+      height: 100px;
+      object-fit: contain;
+      width: 100px;
+    }
+  }
+
+  h1 {
+    @media (max-width: 575px) {
+      font-size: 30px;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 22px;
+    }
+  }
+}

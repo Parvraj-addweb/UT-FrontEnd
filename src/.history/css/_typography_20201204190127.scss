@@ -1,0 +1,188 @@
+/* --------------------------------------------------
+	typography
+-------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	font-family: $Aktiv-medium;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $PxGrotesk-light;
+}
+
+h1,
+.h1 {
+	font-size: 72px;
+	font-weight: 300;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.33;
+	letter-spacing: normal;
+	color: $black;
+  	font-family: $PxGrotesk-light;
+  
+  a {
+    font-size: inherit;
+    font-family: inherit;
+  }
+  @media (max-width: 767px) {
+	line-height: 42px;
+	font-size: 32px;
+	}
+
+}
+
+h2,
+.h2 {
+	font-size: 54px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.41;
+	letter-spacing: normal;
+	color: $black; 
+  	font-family: $PxGrotesk-regular;
+  
+	@media (max-width: 767px) {
+	line-height: 38px;
+	font-size: 26px;
+	}
+}
+
+h3,
+.h3 {
+	font-size: 36px;
+	font-weight:normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.33;
+	letter-spacing: normal;
+	color: $black;
+	font-family: $PxGrotesk-regular;
+
+	@media (max-width: 767px) {
+		line-height: 26px;
+		font-size: 20px;
+	}
+}
+h4,
+.h4 {
+	font-size: 24px;
+	font-weight: 300;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: 0.48px;
+	color: $black;
+	font-family: $PxGrotesk-light;
+
+	@media (max-width: 767px) {
+		font-size: 16px;
+		line-height: 24px;
+	}
+}
+
+.sub-title {
+	font-size: 20px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.35;
+	letter-spacing: normal;
+	color: $black;
+	font-family: $Aktiv-medium;
+}
+
+p,
+ul,
+.regular {
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: $black;
+  font-family: $Aktiv-regular;
+
+  @media (max-width: 767px) {
+    font-size: 14px;
+  }
+}
+
+.small-text {
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	color: $black;
+	font-family: $Aktiv-regular;
+	
+}
+
+.btn-small {
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	color: $black;
+	font-family: $Aktiv-medium;
+
+	@media (min-width:767px){
+		font-size: 14px;
+		line-height: 21px;
+	}
+}
+.btn-large {
+	font-size: 20px;
+	font-weight:500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.35;
+	letter-spacing: normal;
+	color: $black;
+	font-family: $Aktiv-medium;
+}
+
+body {
+	@extend .regular;
+}
+
+a {
+	@extend .regular;
+	text-decoration: none;
+}
+
+.border-caption {
+	display: inline;
+  border-bottom: 2px solid $hover-teal;
+}
+
+// Overridge HEADER/TITLE CSS
+.inner-header-bg h1, 
+.title_container h1.main_title,
+.title_container .main-title {
+  @extend .h1;
+}
+
+
+.template-page .entry-content-wrapper h1, 
+.template-page .entry-content-wrapper h2 {
+  text-transform: unset;
+}
+
+// text-center homepage
+.text-center {
+  text-align: center;
+	h2 {
+    text-align: center !important;
+  }
+  &.title-margin-custom {
+    margin-bottom: 128px;
+    text-align: center;
+  }
+}
