@@ -103,6 +103,12 @@
         width: 575px;
       }
 
+      &.bg-warning {
+        .fa-star {
+          color: white;
+        }
+      }
+
       .user-name,
       .user-phone {
         display: inline-block;
