@@ -74,6 +74,7 @@
 }
 
 .display-data {
+  overflow-y: auto;
   width: 100%;
 
   .sort-btn {
@@ -88,108 +89,139 @@
     @media (max-width: 575px) {
       overflow: auto;
     }
+  }
 
-    .table {
-      border-bottom: 2px solid black;
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      padding-top: 10px;
+  .table {
+    .bg-warning {
+      .fa-star {
+        color: white;
+      }
+    }
 
-      // @media (max-width: 575px) {
-      //   flex-wrap: unset;
-      //   margin: 0;
-      //   margin-bottom: 10px;
-      //   overflow-x: scroll;
-      //   width: 575px;
-      // }
+    thead {
+      tr {
+        a {
+          color: black;
+        }
 
-      &.bg-warning {
-        .fa-star {
-          color: white;
+        .star-head {
+          width: 10%;
+        }
+
+        .user-head {
+          cursor: pointer;
+          white-space: nowrap;
+          width: 30%;
+        }
+
+        .phone-head {
+          cursor: pointer;
+          white-space: nowrap;
+          width: 30%;
+        }
+
+        .action-head {
+          width: 20%;
+        }
+
+        .delete-head {
+          width: 10%;
         }
       }
+    }
 
-      tbody {
-        tr {
-          td {
-            border-top: 0;
-          }
-          .star {
-            width: 10%;
-          }
-          .user-tab {
-            width: 30%;
+    tbody {
+      tr {
+        border-bottom: 2px solid black;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
 
-            &::before {
-              font-family: "Font Awesome 5 Free"; 
-              font-weight: 900;
-              content: "\f007";
-              margin-right: 10px;
-            }
-          }
+        td {
+          border-top: none;
+        }
 
-          .phone-tab {
-            width: 30%;
+        .star {
+          width: 10%;
+        }
 
-            &::before {
-              content: '\f879';
-              font-family: "Font Awesome 5 Free"; 
-              font-weight: 900;
-              margin-right: 10px;
-            }
-          }
-          .btn-wrap {
-            width: 20%;
+        .user-tab {
+          white-space: nowrap;
+          width: 30%;
 
-            .btn-update {
-              margin-right: 20px;
-            }
-          }
-          .delete {
-            width: 10%;
+          &::before {
+            content: "\f007";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 10px;
           }
         }
-      }
 
-      .user-name,
-      .user-phone {
-        display: inline-block;
-      }
+        .phone-tab {
+          white-space: nowrap;
+          width: 30%;
 
-      .form-control {
-        width: auto;
-      }
+          &::before {
+            content: '\f879';
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 10px;
+          }
+        }
 
-      .favorite {
-        color: #FCCC33;
-        margin-right: 20px;
-      }
+        .btn-wrap {
+          white-space: nowrap;
+          width: 20%;
 
-      span {
-        margin-right: 15px;
-      }
-
-      .delete-row {
-        float: right;
+          .btn-update {
+            margin-right: 20px;
+          }
+        }
 
         .delete {
-          color: red;
+          width: 10%;
         }
       }
+    }
 
-      .btn-cancel {
+    .user-name,
+    .user-phone {
+      display: inline-block;
+    }
 
-        i {
-          color: red;
-        }
+    .form-control {
+      width: auto;
+    }
+
+    .favorite {
+      color: #FCCC33;
+      margin-right: 20px;
+    }
+
+    span {
+      margin-right: 15px;
+    }
+
+    .delete-row {
+      float: right;
+
+      .delete {
+        color: red;
       }
+    }
 
-      .btn-edit,
-      .btn-update {
+    .btn-cancel {
 
-        i {
-          color: green;
-        }
+      i {
+        color: red;
+      }
+    }
+
+    .btn-edit,
+    .btn-update {
+
+      i {
+        color: green;
       }
     }
   }

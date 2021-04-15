@@ -1,3 +1,11 @@
+function isPhoneNoExist(mobile) {
+  var mobiles = jQuery('tr[data-phone]').map(function () {
+    return jQuery(this).attr('data-phone');
+  }).get().filter(m => m === mobile);
+
+  return mobiles && mobiles.length > 0;
+}
+
 jQuery(document).ready(function () {
 
   jQuery('#myForm').submit(function (event) {
@@ -11,21 +19,24 @@ jQuery(document).ready(function () {
     });
 
 
-    var name = $("input[name='name']").val();
-    var phone = $("input[name='phone']").val();
+    var name = jQuery("input[name='name']").val();
+    var phone = jQuery("input[name='phone']").val();
 
 
     if (jQuery('#userName').val().length != 0 && jQuery('#userMob').val().length != 0) {
 
-      if (values.phone.length > 0) {
-        if (jQuery('#userMob').val().match(/^[0-9-+]+$/)) {
 
-          jQuery('#displayArea').append("<table class='table' id='datatable'><tbody><tr data-name='" + name + "' data-phone='" + phone + "'><td class='star favtd'><a href='#' class='favorite'><span class='far fa-star'></span></a></td><td class='favtd user-tab'>" + " <span class='user-name'>" + values.name + "</span></td><td class='favtd phone-tab'><span class='user-phone'>" + values.phone + "</span></td><td class='btn-wrap'><a href='#' class='btn-edit'><i class='fas fa-edit'></i></a></td><td class='delete'><a href='#' class='delete-row'><i class='fa fa-trash-alt delete'></i></a></td></tr></tbody></table >");
-
-          jQuery("input[type=text], textarea").val("");
-        } else {
-          alert("Please enter valid phone number");
+      if (values.phone.length == 10) {
+        if (isPhoneNoExist(phone)) {
+          alert('Phone number already exists!');
+          return false;
         }
+
+        jQuery('#displayArea').append("<tr data-name='" + name + "' data-phone='" + phone + "'><td class='star favtd'><a href='#' class='favorite'><span class='far fa-star'></span></a></td><td class='user-tab'>" + " <span class='user-name' id='name'>" + values.name + "</span></td><td class='phone-tab'><span class='user-phone'>" + values.phone + "</span></td><td class='btn-wrap'><a href='#' class='btn-edit'><i class='fas fa-edit'></i></a></td><td class='delete'><a href='#' class='delete-row'><i class='fa fa-trash-alt delete'></i></a></td></tr>");
+        jQuery("input[type=text], textarea").val("");
+
+      } else {
+        alert("Please enter ten digit valid phone number");
       }
     } else {
       alert('Please fill all the details');
@@ -34,52 +45,52 @@ jQuery(document).ready(function () {
 
     jQuery('.delete-row').on('click', function (event) {
       event.preventDefault();
-      jQuery(this).closest('.table').remove();
+      jQuery(this).closest('tr').remove();
     });
 
     jQuery("body").find(".btn-update").hide();
 
   });
 
-  $("body").on("click", ".btn-edit", function (event) {
+  jQuery("body").on("click", ".btn-edit", function (event) {
     event.preventDefault();
-    var name = $(this).parents("tr").attr('data-name');
-    var phone = $(this).parents("tr").attr('data-phone');
+    var name = jQuery(this).parents("tr").attr('data-name');
+    var phone = jQuery(this).parents("tr").attr('data-phone');
 
-    $(this).parents("tr").find("td:eq(1)").html('<input name="edit_name" value="' + name + '">');
-    $(this).parents("tr").find("td:eq(2)").html('<input name="edit_phone" value="' + phone + '">');
+    jQuery(this).parents("tr").find("td:eq(1)").html('<input name="edit_name" value="' + name + '">');
+    jQuery(this).parents("tr").find("td:eq(2)").html('<input name="edit_phone" value="' + phone + '">');
 
-    $(this).parents("tr").find("td:eq(3)").prepend("<a href='#' class='btn-update'><i class='fas fa-check-circle' ></i ></a > <a href='#' class='btn-cancel'><i class='fas fa-times-circle'></i></a>")
-    $(this).hide();
+    jQuery(this).parents("tr").find("td:eq(3)").prepend("<a href='#' class='btn-update'><i class='fas fa-check-circle' ></i ></a > <a href='#' class='btn-cancel'><i class='fas fa-times-circle'></i></a>")
+    jQuery(this).hide();
   });
 
-  $("body").on("click", ".btn-cancel", function (event) {
+  jQuery("body").on("click", ".btn-cancel", function (event) {
     event.preventDefault();
-    var name = $(this).parents("tr").attr('data-name');
-    var phone = $(this).parents("tr").attr('data-phone');
+    var name = jQuery(this).parents("tr").attr('data-name');
+    var phone = jQuery(this).parents("tr").attr('data-phone');
 
-    $(this).parents("tr").find("td:eq(1)").text(name);
-    $(this).parents("tr").find("td:eq(2)").text(phone);
+    jQuery(this).parents("tr").find("td:eq(1)").text(name);
+    jQuery(this).parents("tr").find("td:eq(2)").text(phone);
 
-    $(this).parents("tr").find(".btn-edit").show();
-    $(this).parents("tr").find(".btn-update").remove();
-    $(this).parents("tr").find(".btn-cancel").remove();
+    jQuery(this).parents("tr").find(".btn-edit").show();
+    jQuery(this).parents("tr").find(".btn-update").remove();
+    jQuery(this).parents("tr").find(".btn-cancel").remove();
   });
 
-  $("body").on("click", ".btn-update", function (event) {
+  jQuery("body").on("click", ".btn-update", function (event) {
     event.preventDefault();
-    var name = $(this).parents("tr").find("input[name='edit_name']").val();
-    var phone = $(this).parents("tr").find("input[name='edit_phone']").val();
+    var name = jQuery(this).parents("tr").find("input[name='edit_name']").val();
+    var phone = jQuery(this).parents("tr").find("input[name='edit_phone']").val();
 
-    $(this).parents("tr").find("td:eq(1)").text(name);
-    $(this).parents("tr").find("td:eq(2)").text(phone);
+    jQuery(this).parents("tr").find("td:eq(1)").text(name);
+    jQuery(this).parents("tr").find("td:eq(2)").text(phone);
 
-    $(this).parents("tr").attr('data-name', name);
-    $(this).parents("tr").attr('data-phone', phone);
+    jQuery(this).parents("tr").attr('data-name', name);
+    jQuery(this).parents("tr").attr('data-phone', phone);
 
-    $(this).parents("tr").find(".btn-edit").show();
-    $(this).parents("tr").find(".btn-cancel").remove();
-    $(this).parents("tr").find(".btn-update").remove();
+    jQuery(this).parents("tr").find(".btn-edit").show();
+    jQuery(this).parents("tr").find(".btn-cancel").remove();
+    jQuery(this).parents("tr").find(".btn-update").remove();
   });
 
 });

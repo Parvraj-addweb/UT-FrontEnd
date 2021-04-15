@@ -42,7 +42,7 @@
               <div class=" col-md-2">
                 <div class="btn-wrap">
                   <button class="add-btn" type="submit" name="sub" value="submit">
-                    <i class="fa fa-plus"></i>
+                    <i class=" fa fa-plus"></i>
                     <span>submit</span>
                   </button>
                 </div>
@@ -51,8 +51,21 @@
           </form>
         </div>
         <div class="display-data">
-          <p><button onclick="sortTable()">Sort</button></p>
-          <div id="displayArea"></div>
+          <table class='table' id='datatable'>
+            <thead>
+              <tr class="table-row">
+                <th class="star-head"></th>
+                <th id="firstName" class="user-head">Name <i class="fas fa-sort"></i></th>
+                <th id="number" class="phone-head">Phone Number <i class="fas fa-sort"></i></th>
+                <th class="action-head">Actions</th>
+                <th class="delete-head"></th>
+              </tr>
+            </thead>
+
+            <tbody id="displayArea">
+
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -69,48 +82,52 @@
 
   <script>
 
-    // $(document).on("click", ".favtd", function () {
-    //   $(this).parent().prependTo("#displayArea table");
-    // });
+    $(document).on("click", ".favtd", function () {
+      $(this).parent().prependTo("#displayArea");
+    });
 
-    // $(document).on("click", ".table", function () {
-    //   $(this).addClass('bg-warning');
-    // });
+    $(document).on("click", ".table tbody .favtd", function (event) {
+      event.preventDefault();
+      $(this).parent().addClass('bg-warning');
+    });
 
-    function sortTable() {
-      var table, rows, switching, i, x, y, shouldSwitch;
-      table = document.getElementById("datatable");
-      switching = true;
-      /*Make a loop that will continue until
-      no switching has been done:*/
-      while (switching) {
-        //start by saying: no switching is done:
-        switching = false;
-        rows = table.rows;
-        /*Loop through all table rows (except the
-        first, which contains table headers):*/
-        for (i = 1; i < (rows.length - 1); i++) {
-          //start by saying there should be no switching:
-          shouldSwitch = false;
-          /*Get the two elements you want to compare,
-          one from current row and one from the next:*/
-          x = rows[i].getElementsByTagName("TD")[1];
-          y = rows[i + 1].getElementsByTagName("TD")[1];
-          //check if the two rows should switch place:
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            //if so, mark as a switch and break the loop:
-            shouldSwitch = true;
+    function sortTable(column, type) {
+      var order = $('.table thead tr>th:eq(' + column + ')').data('order');
+      order = order === 'ASC' ? 'DESC' : 'ASC';
+      $('.table thead tr>th:eq(' + column + ')').data('order', order);
+
+      //Sort the table
+      $('.table tbody tr').sort(function (a, b) {
+        a = $(a).find('td:eq(' + column + ')').text();
+        b = $(b).find('td:eq(' + column + ')').text();
+
+        switch (type) {
+          case 'text':
+            return order === 'ASC' ? a.localeCompare(b) : b.localeCompare(a);
             break;
-          }
+          case 'number':
+            return order === 'ASC' ? a - b : b - a;
+            break;
+          case 'date':
+            var dateFormat = function (dt) {
+              [m, d, y] = dt.split('/');
+              return [y, m - 1, d];
+            }
+            a = new Date(...dateFormat(a));
+            b = new Date(...dateFormat(b));
+            return order === 'ASC' ? a.getTime() - b.getTime() : b.getTime() - a.getTime();
+            break;
         }
-        if (shouldSwitch) {
-          /*If a switch has been marked, make the switch
-          and mark that a switch has been done:*/
-          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-          switching = true;
-        }
-      }
+
+      }).appendTo('.table tbody');
     }
+
+    $('#firstName').click(function () {
+      sortTable(1, 'text');
+    });
+    $('#number').click(function () {
+      sortTable(2, 'number');
+    });
 
   </script>
 </body>
