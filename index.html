@@ -32,11 +32,12 @@
           <form id="myForm">
             <div class="row">
               <div class="col-md-5">
-                <input type="text" class="form-control" id="userName" placeholder="Name" name="name">
+                <input type="text" name="name" class="form-control" value="" required="" id="userName"
+                  placeholder="Name">
               </div>
               <div class="col-md-5">
-                <input type="text" maxlength="10" class="form-control phone" id="userMob" placeholder="Phone Number"
-                  name="phone">
+                <input type="text" maxlength="10" name="phone" placeholder="Phone Number" class="form-control phone"
+                  id="userMob" value="" required="">
               </div>
               <div class=" col-md-2">
                 <div class="btn-wrap">
@@ -50,6 +51,7 @@
           </form>
         </div>
         <div class="display-data">
+          <p><button onclick="sortTable()">Sort</button></p>
           <div id="displayArea"></div>
         </div>
       </div>
@@ -67,13 +69,48 @@
 
   <script>
 
-    $(document).on("click", ".favtd", function () {
-      $(this).parent().prependTo("#displayArea");
-    });
+    // $(document).on("click", ".favtd", function () {
+    //   $(this).parent().prependTo("#displayArea table");
+    // });
 
-    $(document).on("click", ".table-row", function () {
-      $(this).addClass('bg-warning');
-    });
+    // $(document).on("click", ".table", function () {
+    //   $(this).addClass('bg-warning');
+    // });
+
+    function sortTable() {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById("datatable");
+      switching = true;
+      /*Make a loop that will continue until
+      no switching has been done:*/
+      while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+          //start by saying there should be no switching:
+          shouldSwitch = false;
+          /*Get the two elements you want to compare,
+          one from current row and one from the next:*/
+          x = rows[i].getElementsByTagName("TD")[1];
+          y = rows[i + 1].getElementsByTagName("TD")[1];
+          //check if the two rows should switch place:
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          /*If a switch has been marked, make the switch
+          and mark that a switch has been done:*/
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
 
   </script>
 </body>

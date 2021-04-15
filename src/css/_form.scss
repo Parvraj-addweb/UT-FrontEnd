@@ -89,23 +89,65 @@
       overflow: auto;
     }
 
-    .table-row {
+    .table {
       border-bottom: 2px solid black;
       margin-bottom: 10px;
       padding-bottom: 10px;
       padding-top: 10px;
 
-      @media (max-width: 575px) {
-        flex-wrap: unset;
-        margin: 0;
-        margin-bottom: 10px;
-        overflow-x: scroll;
-        width: 575px;
-      }
+      // @media (max-width: 575px) {
+      //   flex-wrap: unset;
+      //   margin: 0;
+      //   margin-bottom: 10px;
+      //   overflow-x: scroll;
+      //   width: 575px;
+      // }
 
       &.bg-warning {
         .fa-star {
           color: white;
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            border-top: 0;
+          }
+          .star {
+            width: 10%;
+          }
+          .user-tab {
+            width: 30%;
+
+            &::before {
+              font-family: "Font Awesome 5 Free"; 
+              font-weight: 900;
+              content: "\f007";
+              margin-right: 10px;
+            }
+          }
+
+          .phone-tab {
+            width: 30%;
+
+            &::before {
+              content: '\f879';
+              font-family: "Font Awesome 5 Free"; 
+              font-weight: 900;
+              margin-right: 10px;
+            }
+          }
+          .btn-wrap {
+            width: 20%;
+
+            .btn-update {
+              margin-right: 20px;
+            }
+          }
+          .delete {
+            width: 10%;
+          }
         }
       }
 
@@ -125,13 +167,6 @@
 
       span {
         margin-right: 15px;
-      }
-
-      .btn-wrap {
-        align-items: center;
-        display: flex;
-        height: 100%;
-        justify-content: space-between;
       }
 
       .delete-row {

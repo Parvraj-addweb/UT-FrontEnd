@@ -10,13 +10,18 @@ jQuery(document).ready(function () {
       values[this.phone] = jQuery(this).val();
     });
 
+
+    var name = $("input[name='name']").val();
+    var phone = $("input[name='phone']").val();
+
+
     if (jQuery('#userName').val().length != 0 && jQuery('#userMob').val().length != 0) {
-      console.log(values.phone.length);
-      console.log(values.name.length);
 
       if (values.phone.length > 0) {
         if (jQuery('#userMob').val().match(/^[0-9-+]+$/)) {
-          jQuery('#displayArea').append("<div class='row table-row'><div class='col-md-6 favtd'>" + "<a href='#' class='favorite'><span class='far fa-star'></span></a>" + "<span class='fa fa-user'></span>" + "<span class='user-name'>" + values.name + "</span>" + "</div><div class='col-md-4 favtd'>" + "<span class='fa fa-phone-alt'></span><span class='user-phone'>" + values.phone + "</span></div><div class='col-md-2'><div class='btn-wrap'> <a href='#' class='btn-edit'><i class='fas fa-edit'></i></a><a href='#' class='delete-row'><i class='fa fa-trash-alt delete'></i></a></div>" + "</div></div>");
+
+          jQuery('#displayArea').append("<table class='table' id='datatable'><tbody><tr data-name='" + name + "' data-phone='" + phone + "'><td class='star favtd'><a href='#' class='favorite'><span class='far fa-star'></span></a></td><td class='favtd user-tab'>" + " <span class='user-name'>" + values.name + "</span></td><td class='favtd phone-tab'><span class='user-phone'>" + values.phone + "</span></td><td class='btn-wrap'><a href='#' class='btn-edit'><i class='fas fa-edit'></i></a></td><td class='delete'><a href='#' class='delete-row'><i class='fa fa-trash-alt delete'></i></a></td></tr></tbody></table >");
+
           jQuery("input[type=text], textarea").val("");
         } else {
           alert("Please enter valid phone number");
@@ -27,54 +32,54 @@ jQuery(document).ready(function () {
     }
 
 
-
     jQuery('.delete-row').on('click', function (event) {
       event.preventDefault();
-      jQuery(this).closest('.table-row').remove();
+      jQuery(this).closest('.table').remove();
     });
 
     jQuery("body").find(".btn-update").hide();
 
-    // $(".selected").each(function (index) {})
-    jQuery("body").on("click", ".btn-edit", function (e) {
-      e.stopImmediatePropagation();
-      var name = values.name;
-      var phone = values.phone;
+  });
 
-      jQuery(this).parents(".table-row").find(".user-name").html('<input class="form-control" name="edit_name" value="' + name + '">');
-      jQuery(this).parents(".table-row").find(".user-phone").html('<input class="form-control" type="text" id="userMob" name="edit_phone" placeholder="Phone Number"  maxlength="10"  value="' + phone + '">');
+  $("body").on("click", ".btn-edit", function (event) {
+    event.preventDefault();
+    var name = $(this).parents("tr").attr('data-name');
+    var phone = $(this).parents("tr").attr('data-phone');
 
-      jQuery(this).parents(".table-row").find(".btn-wrap").prepend("<a  href='#' class='btn-update'><i class='fas fa-check-circle'></i></a><a href='#' class='btn-cancel'><i class='fas fa-times-circle'></i></a>");
-      jQuery(this).hide();
-    });
+    $(this).parents("tr").find("td:eq(1)").html('<input name="edit_name" value="' + name + '">');
+    $(this).parents("tr").find("td:eq(2)").html('<input name="edit_phone" value="' + phone + '">');
 
-    jQuery("body").on("click", ".btn-cancel", function () {
-      var name = values.name;
-      var phone = values.phone;
+    $(this).parents("tr").find("td:eq(3)").prepend("<a href='#' class='btn-update'><i class='fas fa-check-circle' ></i ></a > <a href='#' class='btn-cancel'><i class='fas fa-times-circle'></i></a>")
+    $(this).hide();
+  });
 
-      jQuery(this).parents(".table-row").find(".user-name").text(name);
-      jQuery(this).parents(".table-row").find(".user-phone").text(phone);
+  $("body").on("click", ".btn-cancel", function (event) {
+    event.preventDefault();
+    var name = $(this).parents("tr").attr('data-name');
+    var phone = $(this).parents("tr").attr('data-phone');
 
-      jQuery(this).parents(".table-row").find(".btn-edit").show();
-      jQuery(this).parents(".table-row").find(".btn-update").remove();
-      jQuery(this).parents(".table-row").find(".btn-cancel").remove();
-    });
+    $(this).parents("tr").find("td:eq(1)").text(name);
+    $(this).parents("tr").find("td:eq(2)").text(phone);
 
-    jQuery("body").on("click", ".btn-update", function () {
-      var name = jQuery(this).parents(".table-row").find("input[name='edit_name']").val();
-      var phone = jQuery(this).parents(".table-row").find("input[name='edit_phone']").val();
+    $(this).parents("tr").find(".btn-edit").show();
+    $(this).parents("tr").find(".btn-update").remove();
+    $(this).parents("tr").find(".btn-cancel").remove();
+  });
 
-      jQuery(this).parents(".table-row").find(".user-name").text(name);
-      jQuery(this).parents(".table-row").find(".user-phone").text(phone);
+  $("body").on("click", ".btn-update", function (event) {
+    event.preventDefault();
+    var name = $(this).parents("tr").find("input[name='edit_name']").val();
+    var phone = $(this).parents("tr").find("input[name='edit_phone']").val();
 
-      jQuery(this).parents(".table-row").attr('data-name', name);
-      jQuery(this).parents(".table-row").attr('data-phone', phone);
+    $(this).parents("tr").find("td:eq(1)").text(name);
+    $(this).parents("tr").find("td:eq(2)").text(phone);
 
-      jQuery(this).parents(".table-row").find(".btn-edit").show();
-      jQuery(this).parents(".table-row").find(".btn-cancel").remove();
-      jQuery(this).parents(".table-row").find(".btn-update").remove();
-    });
+    $(this).parents("tr").attr('data-name', name);
+    $(this).parents("tr").attr('data-phone', phone);
 
+    $(this).parents("tr").find(".btn-edit").show();
+    $(this).parents("tr").find(".btn-cancel").remove();
+    $(this).parents("tr").find(".btn-update").remove();
   });
 
 });
